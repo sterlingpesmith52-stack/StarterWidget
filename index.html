@@ -21,6 +21,7 @@
     body {
         margin: 0;
         padding: 20px;
+        padding-bottom: 80px; /* ensures content never hides behind fixed footer */
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         background: #ffffff;
         color: var(--mf-text);
@@ -92,7 +93,7 @@
 
     textarea {
         width: 100%;
-        height: 120px;
+        height: 110px; /* shortened so content stays above footer */
         padding: 12px;
         font-size: 16px;
         border: 1px solid var(--mf-border);
@@ -106,11 +107,19 @@
         border-color: #000;
     }
 
-    /* Buy button footer */
-    .buy-row {
-        margin-top: 20px;
-        padding-top: 20px;
+    /* FIXED FOOTER BUY BUTTON */
+    .buy-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #ffffff;
         border-top: 1px solid var(--mf-border);
+        padding: 14px 20px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        z-index: 999;
     }
 
     .buy-btn {
@@ -147,8 +156,8 @@
         <textarea id="inputBox" placeholder="Paste text here..."></textarea>
     </div>
 
-    <!-- Buy This Tool footer -->
-    <div id="buyRow" class="buy-row">
+    <!-- FIXED FOOTER BUY BUTTON -->
+    <div id="buyFooter" class="buy-footer">
         <a class="buy-btn" href="/Payment/payment.html?tool=StarterWidget">
             Buy This Tool
         </a>
@@ -172,8 +181,8 @@
     const ownership = params.get("perimeter");
 
     if (ownership === "customerOwned") {
-        const buyRow = document.getElementById("buyRow");
-        if (buyRow) buyRow.style.display = "none";
+        const buyFooter = document.getElementById("buyFooter");
+        if (buyFooter) buyFooter.style.display = "none";
     }
 </script>
 
