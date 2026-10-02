@@ -6,6 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Starter Widget</title>
 
+<link rel="stylesheet" href="universal.css">
+
 <style>
     :root {
         --mf-primary: #007AFF;
@@ -67,9 +69,9 @@
         border: none;
         border-radius: 6px;
         cursor: pointer;
-        width: auto !important;        /* FORCE auto width */
+        width: auto !important;
         display: inline-block !important;
-        flex: 0 0 auto !important;      /* Prevent stretching */
+        flex: 0 0 auto !important;
     }
 
     .run-btn {
@@ -103,6 +105,27 @@
         outline: none;
         border-color: #000;
     }
+
+    /* Buy button footer */
+    .buy-row {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid var(--mf-border);
+    }
+
+    .buy-btn {
+        background: var(--mf-primary);
+        color: white;
+        padding: 10px 16px;
+        font-size: 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .buy-btn:active {
+        background: var(--mf-primary-active);
+    }
 </style>
 </head>
 
@@ -124,6 +147,13 @@
         <textarea id="inputBox" placeholder="Paste text here..."></textarea>
     </div>
 
+    <!-- Buy This Tool footer -->
+    <div id="buyRow" class="buy-row">
+        <a class="buy-btn" href="/Payment/payment.html?tool=StarterWidget">
+            Buy This Tool
+        </a>
+    </div>
+
 <script>
     const runBtn = document.getElementById("runBtn");
     const clearBtn = document.getElementById("clearBtn");
@@ -136,6 +166,15 @@
     clearBtn.onclick = () => {
         inputBox.value = "";
     };
+
+    /* Ownership logic (same as Clarifier) */
+    const params = new URLSearchParams(window.location.search);
+    const ownership = params.get("perimeter");
+
+    if (ownership === "customerOwned") {
+        const buyRow = document.getElementById("buyRow");
+        if (buyRow) buyRow.style.display = "none";
+    }
 </script>
 
 </body>
