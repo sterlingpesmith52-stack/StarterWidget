@@ -1,201 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Starter Widget</title>
 
 <link rel="stylesheet" href="universal.css">
 
 <style>
-    :root {
-        --mf-primary: #007AFF;
-        --mf-primary-active: #005FCC;
-        --mf-secondary: #000000;
-        --mf-secondary-active: #222222;
-        --mf-border: #ccc;
-        --mf-text: #000;
-    }
-
     body {
+        background: #ffffff;
         margin: 0;
         padding: 20px;
-        padding-bottom: 100px;
+        padding-bottom: 90px;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        background: #ffffff;
-        color: var(--mf-text);
     }
 
+    /* Clarifier-standard header */
     .header-row {
         display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        margin-bottom: 12px;
-    }
-
-    .logo {
-        height: 32px;
-        width: auto;
-        object-fit: contain;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
         margin-bottom: 6px;
     }
 
-    .title {
+    .header-left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .header-left img {
+        height: 32px;
+        width: auto;
+        border-radius: 6px;
+    }
+
+    .tool-title {
+        font-weight: bold !important;
         font-size: 28px;
-        font-weight: 600;
-        margin-bottom: 12px;
+        margin: 0;
+        padding: 0;
+        text-align: left;
     }
 
     .container {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
         max-width: 500px;
     }
 
-    .button-row {
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-        align-items: center;
-    }
-
-    /* Brand Standard Buttons */
-    button,
-    .buy-btn {
-        min-width: 120px;
-        height: 44px;
-        padding: 0 20px;
-        font-size: 16px;
-        font-weight: 500;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        box-sizing: border-box;
-    }
-
-    button {
-        display: inline-block;
+    /* Exact Clarifier button standard */
+    .mf-button {
         width: auto;
+        min-width: auto;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 14px;
+        text-decoration: none;
+        display: inline-block;
+        border: none;
+        cursor: pointer;
     }
 
-    .run-btn {
-        background: var(--mf-primary);
+    .action-button {
+        background: #007aff;
         color: #fff;
     }
 
-    .run-btn:hover,
-    .run-btn:active {
-        background: var(--mf-primary-active);
-    }
-
-    .clear-btn {
-        background: var(--mf-secondary);
+    .secondary-button {
+        background: #000;
         color: #fff;
     }
 
-    .clear-btn:hover,
-    .clear-btn:active {
-        background: var(--mf-secondary-active);
+    .button-row {
+        margin-top: 12px;
+        margin-bottom: 12px;
+        display: flex;
+        gap: 10px;
     }
 
     textarea {
         width: 100%;
-        height: 110px;
+        height: 150px;
         padding: 12px;
-        font-size: 16px;
-        border: 1px solid var(--mf-border);
-        border-radius: 6px;
-        resize: none;
         box-sizing: border-box;
-    }
-
-    textarea:focus {
-        outline: none;
-        border-color: #000;
+        font-size: 16px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        resize: vertical;
     }
 
     .buy-footer {
         position: fixed;
-        bottom: 0;
         left: 0;
         right: 0;
+        bottom: 0;
         background: #ffffff;
-        border-top: 1px solid var(--mf-border);
+        border-top: 1px solid #ccc;
         padding: 14px 20px;
-        display: flex;
-        align-items: center;
-        z-index: 999;
-    }
-
-    .buy-btn {
-        background: var(--mf-primary);
-        color: #fff;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .buy-btn:hover,
-    .buy-btn:active {
-        background: var(--mf-primary-active);
+        z-index: 1000;
     }
 </style>
 </head>
 
 <body>
 
-    <div class="header-row">
+<div class="header-row">
+
+    <div class="header-left">
         IMG_1741.jpeg
-        <div class="title">Starter Widget</div>
+        <h1 class="tool-title">Starter Widget</h1>
     </div>
 
-    <div class="container">
+</div>
 
-        <div class="button-row">
-            <button class="run-btn" id="runBtn">Run</button>
-            <button class="clear-btn" id="clearBtn">Clear</button>
-        </div>
+<div class="container">
 
-        <textarea
-            id="inputBox"
-            placeholder="Paste text here..."
-        ></textarea>
-
+    <div class="button-row">
+        <button class="mf-button action-button" id="runBtn">Run</button>
+        <button class="mf-button secondary-button" id="clearBtn">Clear</button>
     </div>
 
-    <div id="buyFooter" class="buy-footer">
-        /Payment/payment.html?tool=StarterWidget
-            Buy This Tool
-        </a>
-    </div>
+    <textarea
+        id="inputBox"
+        placeholder="Paste text here..."
+    ></textarea>
+
+</div>
+
+<div id="buyFooter" class="buy-footer">
+    /Payment/payment.html?tool=StarterWidget
+       Buy This Tool
+    </a>
+</div>
 
 <script>
-    const runBtn = document.getElementById("runBtn");
-    const clearBtn = document.getElementById("clearBtn");
-    const inputBox = document.getElementById("inputBox");
+const runBtn = document.getElementById("runBtn");
+const clearBtn = document.getElementById("clearBtn");
+const inputBox = document.getElementById("inputBox");
 
-    runBtn.onclick = () => {
-        alert("Run button pressed. (Add your logic here.)");
-    };
+runBtn.onclick = () => {
+    alert("Run button pressed. (Add your logic here.)");
+};
 
-    clearBtn.onclick = () => {
-        inputBox.value = "";
-    };
+clearBtn.onclick = () => {
+    inputBox.value = "";
+};
 
-    const params = new URLSearchParams(window.location.search);
-    const ownership = params.get("perimeter");
+const params = new URLSearchParams(window.location.search);
+const perimeter = params.get("perimeter");
 
-    if (ownership === "customerOwned") {
-        const buyFooter = document.getElementById("buyFooter");
-
-        if (buyFooter) {
-            buyFooter.style.display = "none";
-        }
+if (perimeter === "customerOwned") {
+    const buyFooter = document.getElementById("buyFooter");
+    if (buyFooter) {
+        buyFooter.style.display = "none";
     }
+}
 </script>
 
 </body>
 </html>
-
